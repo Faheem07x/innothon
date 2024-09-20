@@ -84,13 +84,11 @@
             font-size: 24px;
         }
 
-        .chart-container {
-            position: relative;
-            height: 300px;
-        }
-
         .table-container {
             margin-top: 40px;
+        }
+        .table-container h2{
+            color: white;
         }
 
         .table-container table {
@@ -132,23 +130,30 @@
             margin: 0;
         }
 
-        footer a {
-            color: #4caf50;
-            text-decoration: none;
-        }
         .logo-container {
             margin-left: 95%;
-            width: 50x50px;
             display: inline-block;
-            margin-top: 0 ;
+            margin-top: 0;
         }
 
         .logo-container img {
             height: 50px;
             margin-top: 10px;
             display: inline-block;
-            width: 50x50px;
+            width: 50px; /* Fixed typo from 50x50px */
         }
+
+        .status-message {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .timer {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        
     </style>
 </head>
 <body>
@@ -156,9 +161,8 @@
     <nav>
         <ul>
             <li><a href="home.html">Home</a></li>
-            <li><a href="worker-management.html">Worker Management</a></li>
             <li><a href="shift-schedule.html">Shift Scheduling</a></li>
-            <li><a href="#">Attendance Tracking</a></li>
+            <li><a href="att.html">Attendance Tracking</a></li>
             <li><a href="#">Performance Metrics</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
@@ -233,9 +237,16 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
-   
+        <div class="card">
+            <h2>Check In/Out</h2>
+            <button id="check-in-btn">Check In</button>
+            <button id="check-out-btn">Check Out</button>
+            <div id="status-message" class="status-message"></div>
+            <div id="timer" class="timer">Timer: 00:00</div>
+        </div>
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -310,13 +321,57 @@
                         beginAtZero: true,
                         ticks: {
                             callback: function(value) {
-                                return value + '%';
+                                return value + '%'; // Append '%' to y-axis ticks
                             }
                         }
                     }
                 }
             }
         });
+
+        let checkInTimer;
+        let timerInterval;
+        let seconds = 0;
+
+        document.getElementById('check-in-btn').addEventListener('click', function() {
+            const statusMessage = document.getElementById('status-message');
+            statusMessage.textContent = 'Verifying...';
+            statusMessage.style.color = 'green';
+
+            clearTimeout(checkInTimer); // Clear any existing timer
+            clearInterval(timerInterval); // Stop any existing timer interval
+            seconds = 0; // Reset seconds for the new timer
+
+            // Start the verification timeout
+            checkInTimer = setTimeout(() => {
+                statusMessage.textContent = 'Checked In!';
+                statusMessage.style.color = 'green';
+
+                // Start counting time after verification
+                timerInterval = setInterval(() => {
+                    seconds++;
+                    document.getElementById('timer').textContent = `Timer: ${Math.floor(seconds / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`;
+                }, 1000); // Update timer every second
+            }, 4000); // 4 seconds
+        });
+
+        document.getElementById('check-out-btn').addEventListener('click', function() {
+            const statusMessage = document.getElementById('status-message');
+            clearTimeout(checkInTimer); // Stop the timer if it's running
+            clearInterval(timerInterval); // Stop the timer interval
+            seconds = 0; // Reset seconds
+            document.getElementById('timer').textContent = `Timer: 00:00`; // Reset displayed timer
+            statusMessage.textContent = 'Checked Out!';
+            statusMessage.style.color = 'red'; // Change color to indicate check out
+
+            // Reset status message after a short delay
+            setTimeout(() => {
+                statusMessage.textContent = ''; // Clear message after check out
+            }, 2000); // 2 seconds
+        });
     </script>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
 </body>
 </html>
