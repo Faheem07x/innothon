@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracking</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            background-image: url(nobg.jpg);
+        }
+
+        nav {
+            background-color: #1e2a38;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 60px; /* Space for fixed nav */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1 1 300px;
+        }
+
+        .card h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .table-container {
+            margin-top: 40px;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table-container th,
+        .table-container td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table-container th {
+            background-color: #1e2a38;
+            color: white;
+        }
+
+        .table-container tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        footer {
+            background-color: #1e2a38;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+        .logo-container {
+            margin-left: 95%;
+            width: 50x50px;
+            display: inline-block;
+            margin-top: 0 ;
+        }
+
+        .logo-container img {
+            height: 50px;
+            margin-top: 10px;
+            display: inline-block;
+            width: 50x50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="worker-management.html">Worker Management</a></li>
+            <li><a href="shift-schedule.html">Shift Scheduling</a></li>
+            <li><a href="#">Attendance Tracking</a></li>
+            <li><a href="#">Performance Metrics</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="logo-container">
+            <img src="icon.jpg" alt="Nokia Logo"> <!-- Add your logo image path here -->
+        </div>      
+    </nav>
+
+    <header>
+        <h1>Attendance Tracking</h1>
+    </header>
+
+    <div class="container">
+        <div class="cards">
+            <div class="card">
+                <h2>Attendance Overview</h2>
+                <div class="chart-container">
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Monthly Attendance Summary</h2>
+                <div class="chart-container">
+                    <canvas id="monthlyAttendanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h2>Detailed Attendance Records</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Days Present</th>
+                        <th>Days Absent</th>
+                        <th>Days On Leave</th>
+                        <th>Total Attendance (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>John Doe</td>
+                        <td>Production</td>
+                        <td>20</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>90%</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Jane Smith</td>
+                        <td>Quality Control</td>
+                        <td>18</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>Robert Brown</td>
+                        <td>Logistics</td>
+                        <td>22</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>95%</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx1 = document.getElementById('attendanceChart').getContext('2d');
+        var attendanceChart = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['Present', 'Absent', 'On Leave'],
+                datasets: [{
+                    label: 'Attendance Distribution',
+                    data: [65, 20, 15], // Example data
+                    backgroundColor: ['#4caf50', '#f44336', '#ff9800']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var label = tooltipItem.label || '';
+                                if (label) {
+                                    label += ': ' + tooltipItem.raw + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('monthlyAttendanceChart').getContext('2d');
+        var monthlyAttendanceChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Attendance Percentage',
+                    data: [75, 85, 80, 90], // Example data
+                    backgroundColor: '#4caf50',
+                    borderColor: '#388e3c',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var label = tooltipItem.dataset.label || '';
+                                if (label) {
+                                    label += ': ' + tooltipItem.raw + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

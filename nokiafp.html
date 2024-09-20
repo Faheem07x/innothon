@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory Worker Management</title>
+    <link rel="stylesheet" href="nokia.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <h1>Factory Worker Management System</h1>
+        
+        <!-- Login Form -->
+        <div id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="email" placeholder="Enter your email">
+            <input type="password" id="password" placeholder="Enter your password">
+            <button id="login-btn">Login</button>
+        </div>
+
+        <!-- Dashboard (hidden by default) -->
+        <div id="dashboard" style="display: none;">
+            <h2>Dashboard</h2>
+            <p>Welcome to the Factory Worker Management Dashboard!</p>
+
+            <!-- Navigation Buttons -->
+            <button id="worker-management-btn">Worker Management</button>
+            <button id="shift-scheduling-btn">Shift Scheduling</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+
+        <!-- Worker Management Section (hidden by default) -->
+        <div id="worker-management" style="display: none;">
+            <h2>Worker Management</h2>
+            <input type="text" id="worker-name" placeholder="Enter worker name">
+            <input type="text" id="worker-role" placeholder="Enter worker role">
+            <button id="add-worker-btn">Add Worker</button>
+
+            <h3>Worker List</h3>
+            <ul id="worker-list"></ul>
+            <button id="back-to-dashboard">Back to Dashboard</button>
+        </div>
+
+        <!-- Shift Scheduling Section (hidden by default) -->
+        <div id="shift-scheduling" style="display: none;">
+            <h2>Shift Scheduling</h2>
+            <input type="text" id="shift-worker-name" placeholder="Enter worker name for shift">
+            <input type="date" id="shift-date">
+            <input type="time" id="shift-time">
+            <button id="schedule-shift-btn">Schedule Shift</button>
+
+            <h3>Shift List</h3>
+            <ul id="shift-list"></ul>
+            <button id="back-to-dashboard-schedule">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

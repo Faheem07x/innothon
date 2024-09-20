@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift Schedule</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        nav {
+            background-color: #1e2a38;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px; /* Space for fixed nav */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        section.content {
+            padding: 40px 20px;
+        }
+
+        .overview, .assign-shift, .calendar, .details, .export-import {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview h2, .assign-shift h2, .calendar h2, .details h2, .export-import h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+        }
+
+        .overview table, .details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .overview table th, .details table th, .overview table td, .details table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .overview table th, .details table th {
+            background-color: #f1f1f1;
+        }
+
+        .assign-shift form, .export-import form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .assign-shift form input, .export-import form select, .assign-shift form button, .export-import form button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .assign-shift form button, .export-import form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .assign-shift form button:hover, .export-import form button:hover {
+            background-color: #218838;
+        }
+
+        .calendar {
+            text-align: center;
+        }
+
+        .calendar .calendar-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .calendar .calendar-container div {
+            margin: 10px;
+        }
+
+        footer {
+            background-color: #1e2a38;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        footer ul li {
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .logo-container {
+            margin-left: 95%;
+            width: 50x50px;
+            display: inline-block;
+            margin-top: 0 ;
+        }
+
+        .logo-container img {
+            height: 50px;
+            margin-top: 10px;
+            display: inline-block;
+            width: 50x50px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="worker-management.html">Worker Management</a></li>
+            <li><a href="shift-schedule.html">Shift Scheduling</a></li>
+            <li><a href="att.html">Attendance Tracking</a></li>
+            <li><a href="#">Performance Metrics</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="logo-container">
+            <img src="icon.jpg" alt="Nokia Logo"> <!-- Add your logo image path here -->
+        </div>
+    </nav>
+
+    <header>
+        <h1>Shift Schedule</h1>
+    </header>
+
+    <section class="content">
+        <!-- Shift Overview -->
+        <div class="overview">
+            <h2>Shift Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shift ID</th>
+                        <th>Department</th>
+                        <th>Worker</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Manufacturing</td>
+                        <td>John Doe</td>
+                        <td>08:00 AM</td>
+                        <td>04:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Quality Control</td>
+                        <td>Jane Smith</td>
+                        <td>04:00 PM</td>
+                        <td>12:00 AM</td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Assign Shift -->
+        <div class="assign-shift">
+            <h2>Assign Shift</h2>
+            <form>
+                <label for="worker">Worker:</label>
+                <input type="text" id="worker" name="worker" required>
+
+                <label for="department">Department:</label>
+                <select id="department" name="department" required>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="quality-control">Quality Control</option>
+                    <!-- More options as needed -->
+                </select>
+
+                <label for="start-time">Start Time:</label>
+                <input type="time" id="start-time" name="start-time" required>
+
+                <label for="end-time">End Time:</label>
+                <input type="time" id="end-time" name="end-time" required>
+
+                <button type="submit">Assign Shift</button>
+            </form>
+        </div>
+
+        <!-- Shift Calendar -->
+        <div class="calendar">
+            <h2>Shift Calendar</h2>
+            <div class="calendar-container">
+                <div>
+                    <strong>Month View</strong>
+                    <!-- Placeholder for calendar view -->
+                    <p>Calendar view will be integrated here.</p>
+                </div>
+                <div>
+                    <strong>Weekly View</strong>
+                    <!-- Placeholder for weekly view -->
+                    <p>Weekly view will be integrated here.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Shift Information -->
+        <div class="details">
+            <h2>Detailed Shift Information</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shift ID</th>
+                        <th>Worker</th>
+                        <th>Department</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>Manufacturing</td>
+                        <td>2024-09-01</td>
+                        <td>08:00 AM</td>
+                        <td>04:00 PM</td>
+                        <td>8 hours</td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Export/Import Options -->
+        <div class="export-import">
+            <h2>Export/Import Shifts</h2>
+            <form>
+                <label for="file">Upload Shift File:</label>
+                <input type="file" id="file" name="file">
+
+                <button type="submit">Upload</button>
+            </form>
+            <form>
+                <button type="button">Export Shifts</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Factory Worker Management System. All rights reserved.</p>
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

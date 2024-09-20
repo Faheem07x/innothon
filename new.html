@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nokia Workforce Management</title>
+    <link rel="stylesheet" href="new.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="icon.jpg" alt="Nokia Logo">
+        </div>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Performance Metrics</a></li>
+            <li><a href="#">Shift Scheduling</a></li>
+            <li><a href="#">My Tasks</a></li>
+            <li><a href="#">AI Chat</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Workforce Management Dashboard</h1>
+        </div>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Shift Scheduling</h3>
+                <canvas id="shiftChart"></canvas>
+            </div>
+            <div class="card">
+                <h3>Performance Metrics</h3>
+                <canvas id="performanceChart"></canvas>
+            </div>
+            <div class="card">
+                <h3>Task Management</h3>
+                <p>Assign and track tasks for employees.</p>
+            </div>
+            <div class="card">
+                <h3>Attendance</h3>
+                <canvas id="attendanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Shift Scheduling Chart
+        const shiftCtx = document.getElementById('shiftChart').getContext('2d');
+        const shiftChart = new Chart(shiftCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                datasets: [{
+                    label: 'Work Hours',
+                    data: [8, 7, 9, 8, 6, 5],
+                    backgroundColor: '#0070c9'
+                }, {
+                    label: 'Break Hours',
+                    data: [1, 1, 1, 1, 1, 1],
+                    backgroundColor: '#ccc'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Performance Metrics Chart (Doughnut)
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(performanceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Project 1', 'Project 2', 'Project 3'],
+                datasets: [{
+                    label: 'Project Progress',
+                    data: [60, 25, 15],
+                    backgroundColor: ['#0070c9', '#f39c12', '#e74c3c']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Attendance Chart
+        const attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
+        const attendanceChart = new Chart(attendanceCtx, {
+            type: 'line',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                datasets: [{
+                    label: 'Attendance Rate',
+                    data: [85, 75, 90, 80, 70, 60],
+                    borderColor: '#0070c9',
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

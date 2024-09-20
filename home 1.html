@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .auth-container, .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-container button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+        }
+        .tab-button {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .tab-button:hover {
+            background-color: #0056b3;
+        }
+        .form {
+            display: none;
+        }
+        .form.active {
+            display: block;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        .key-metrics, .charts, .notifications, .calendar, .filters, .attendance-table, .status-summary, .export, .performance-summary, .individual-performance, .comparison-tool {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calendar {
+            background: url('calendar-image.jpg') no-repeat center center;
+            background-size: cover;
+            height: 300px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .filters, .status-summary, .performance-summary, .individual-performance {
+            display: flex;
+            flex-direction: column;
+        }
+        .filters label, .status-summary label, .performance-summary label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .filters select, .status-summary select, .performance-summary select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .chart {
+            height: 300px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Your Company</div>
+        <nav>
+            <a href="#login">Login/Sign-up</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#shift-scheduling">Shift Scheduling</a>
+            <a href="#attendance">Attendance</a>
+            <a href="#performance">Performance Reports</a>
+        </nav>
+    </header>
+    <main>
+        <!-- Login/Sign-up Page -->
+        <section id="login" class="auth-container">
+            <div class="form-container">
+                <div class="tabs">
+                    <button class="tab-button" onclick="showForm('login-form')">Login</button>
+                    <button class="tab-button" onclick="showForm('signup-form')">Sign-up</button>
+                </div>
+                <div id="login-form" class="form active">
+                    <input type="text" placeholder="Username/Email">
+                    <input type="password" placeholder="Password">
+                    <a href="#">Forgot Password?</a>
+                    <button>Login</button>
+                </div>
+                <div id="signup-form" class="form">
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Confirm Password">
+                    <button>Sign-up</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin/Manager Dashboard -->
+        <section id="dashboard" class="key-metrics">
+            <h2>Admin/Manager Dashboard</h2>
+            <div>Total Employees: 100</div>
+            <div>Attendance Status: 95%</div>
+            <div>Upcoming Shifts: 20</div>
+            <div>Performance Overview: Good</div>
+            <div class="charts">
+                <div class="chart">Attendance Trends Chart</div>
+                <div class="chart">Shift Fulfillment Chart</div>
+                <div class="chart">Performance Trends Chart</div>
+            </div>
+            <div class="notifications">
+                <h3>Recent Updates</h3>
+                <p>Missed shifts: 5</p>
+                <p>Pending evaluations: 3</p>
+            </div>
+        </section>
+
+        <!-- Shift Scheduling Page -->
+        <section id="shift-scheduling" class="calendar">
+            <h2>Shift Scheduling</h2>
+            <div>Calendar Interface</div>
+            <div class="filters">
+                <label for="department">Filter by Department:</label>
+                <select id="department">
+                    <option>All</option>
+                    <option>HR</option>
+                    <option>IT</option>
+                </select>
+                <label for="shift-type">Filter by Shift Type:</label>
+                <select id="shift-type">
+                    <option>All</option>
+                    <option>Morning</option>
+                    <option>Evening</option>
+                </select>
+            </div>
+            <div class="availability">
+                <h3>Employee Availability</h3>
+                <!-- Employee availability table here -->
+            </div>
+        </section>
+
+        <!-- Attendance Tracking Page -->
+        <section id="attendance" class="attendance-table">
+            <h2>Attendance Tracking</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Check-in Time</th>
+                        <th>Check-out Time</th>
+                        <th>Total Hours Worked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Add table rows here -->
+                </tbody>
+            </table>
+            <div class="status-summary">
+                <label>Total Present:</label>
+                <div>95%</div>
+                <label>Total Absent:</label>
+                <div>3%</div>
+                <label>Total Late:</label>
+                <div>2%</div>
+            </div>
+            <div class="export">
+                <button>Export to CSV</button>
+                <button>Export to Excel</button>
+            </div>
+        </section>
+
+        <!-- Performance Reports Page -->
+        <section id="performance" class="performance-summary">
+            <h2>Performance Reports</h2>
+            <div class="filters">
+                <label for="employee">Filter by Employee:</label>
+                <select id="employee">
+                    <option>All</option>
+                    <option>John Doe</option>
+                    <option>Jane Smith</option>
+                </select>
+                <label for="period">Filter by Time Period:</label>
+                <select id="period">
+                    <option>Last Week</option>
+                    <option>Last Month</option>
+                    <option>Last Year</option>
+                </select>
+            </div>
+            <div class="performance-summary">
+                <h3>Overall Performance</h3>
+                <!-- Add performance summary here -->
+            </div>
+            <div class="individual-performance">
+                <h3>Individual Performance Reports</h3>
+                <!-- Add individual performance reports here -->
+            </div>
+            <div class="comparison-tool">
+                <h3>Comparison Tool</h3>
+                <!-- Add comparison tool here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a>
+    </footer>
+    <script>
+        function showForm(formId) {
+            document.querySelectorAll('.form').forEach(form => {
+                form.classList.remove('active');
+            });
+            document.getElementById(formId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

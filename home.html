@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory Worker Management System</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        nav {
+            background-color: #1e2a38;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .logo-container {
+            margin-right: 20px;
+        }
+
+        .logo-container img {
+            height: 50px;
+        }
+
+        header.hero {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 60px; /* Space for fixed nav */
+        }
+
+        header.hero h1 {
+            margin: 0;
+            font-size: 36px;
+            line-height: 1.2;
+        }
+
+        header.hero p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        header.hero button {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        header.hero button:hover {
+            background-color: #218838;
+        }
+
+        section.features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .feature {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .feature p {
+            font-size: 16px;
+        }
+
+        section.about {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+
+        section.about h2 {
+            font-size: 28px;
+            margin: 0 0 20px;
+        }
+
+        section.about p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section.cta {
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin: 40px 20px;
+        }
+
+        section.cta h2 {
+            margin: 0 0 20px;
+            font-size: 32px;
+        }
+
+        section.cta button {
+            background-color: #218838;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        section.cta button:hover {
+            background-color: #1e7e34;
+        }
+
+        footer {
+            background-color: #1e2a38;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        footer ul li {
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .attendance-tracking {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .attendance-tracking h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+        }
+
+        .attendance-tracking .info {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="worker-management.html">Worker Management</a></li>
+            <li><a href="shift-schedule.html">Shift Scheduling</a></li>
+            <li><a href="att.html">Attendance tracking </a></li>
+            <li><a href="performance-metrics.html">Performance Metrics</a></li> <!-- Added Performance Metrics -->
+            <li><a href="contact.html">Contact Us</a></li>
+            
+        </ul>
+        <div class="logo-container">
+            <img src="icon.jpg" alt="Nokia Logo"> <!-- Add your logo image path here -->
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Welcome to the Factory Worker Management System</h1>
+        <p>Streamline your factory’s workforce management, scheduling, and performance tracking with ease.</p>
+        <button>Get Started</button>
+    </header>
+
+    <section class="features">
+        <div class="feature">
+            <h2>Worker Management</h2>
+            <p>Manage worker profiles, assign roles, and keep track of your workforce in one place.</p>
+        </div>
+        <div class="feature">
+            <h2>Shift Scheduling</h2>
+            <p>Plan, schedule, and assign shifts to workers efficiently.</p>
+        </div>
+        <div class="feature">
+            <h2>Attendance Tracking</h2>
+            <p>Monitor real-time attendance of your workers and manage absences with ease.</p>
+        </div>
+    </section>
+
+    <section class="attendance-tracking">
+        <h2>Attendance Tracking Overview</h2>
+        <div class="info">
+            <h3>Nokia Attendance Management Insights</h3>
+            <p><strong>Overview:</strong> Nokia's attendance management system provides real-time tracking and analytics to enhance workforce productivity. By leveraging advanced data analytics, Nokia ensures efficient management of employee schedules and attendance.</p>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li>Real-time Attendance Monitoring</li>
+                <li>Automated Alerts for Absences</li>
+                <li>Detailed Attendance Reports</li>
+                <li>Integration with Payroll Systems</li>
+            </ul>
+            <p><strong>Benefits:</strong> Nokia's system reduces administrative overhead, enhances workforce productivity, and ensures accurate tracking of employee time and attendance.</p>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>About the Factory Worker Management System</h2>
+        <p>This system helps managers efficiently allocate their workforce, manage schedules, and track productivity, all in one place.</p>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Optimize Your Workforce?</h2>
+        <button>Get Started Now</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Factory Worker Management System. All rights reserved.</p>
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
